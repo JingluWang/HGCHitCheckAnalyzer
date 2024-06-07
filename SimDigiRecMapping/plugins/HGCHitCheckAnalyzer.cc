@@ -170,7 +170,18 @@ void HGCHitCheckAnalyzer::analyze( const edm::Event &iEvent, const edm::EventSet
 
 
   //analyze the accumulators, maybe fill some plots etc. :)
+  std::cout << "size of 'hgcalDetIdMapper': " << hgcalDetIdMapper.size() << std::endl;
   
+  auto it = hgcalDetIdMapper.begin();
+  while ( it != hgcalDetIdMapper.end() ) {
+    cout << "key(detId): " << it->first 
+         << ", hasValidDetId: " << it->second.hasValidDetId
+         << ", hasValidSimHit: " << it->second.hasValidSimHit
+         << ", hasValidDigi: " << it->second.hasValidDigi
+         << ", hasValidRecHit: " << it->second.hasValidRecHit
+         << std::endl;
+    ++it;
+  }
 }
 
 

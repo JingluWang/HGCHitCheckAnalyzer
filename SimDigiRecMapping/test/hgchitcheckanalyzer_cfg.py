@@ -7,7 +7,8 @@ process = cms.Process("ANALYSIS", Era_Phase2)
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('standard')
 options.register('input', 
-                 '/eos/cms/store/relval/CMSSW_13_0_0_pre4/RelValCloseByPGun_CE_E_Front_120um/GEN-SIM-RECO/130X_mcRun4_realistic_v2_2026D88noPU-v1/00000/0437a2c5-a715-4f03-a8e7-e5d245a23bd0.root',
+                 #'/eos/cms/store/relval/CMSSW_13_0_0_pre4/RelValCloseByPGun_CE_E_Front_120um/GEN-SIM-RECO/130X_mcRun4_realistic_v2_2026D88noPU-v1/00000/0437a2c5-a715-4f03-a8e7-e5d245a23bd0.root',
+                 '/eos/cms/store/group/dpg_hgcal/comm_hgcal/Production/TTbar_TuneCP5_14TeV-pythia8_PU200_startup_nonoise_CMSSW_14_1_0_pre1_Extended2026D99/Events_200.root',
                  VarParsing.multiplicity.singleton, 
                  VarParsing.varType.string, 
                  "input directory")

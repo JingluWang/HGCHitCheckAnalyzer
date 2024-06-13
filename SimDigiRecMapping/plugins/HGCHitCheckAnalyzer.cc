@@ -173,15 +173,25 @@ void HGCHitCheckAnalyzer::analyze( const edm::Event &iEvent, const edm::EventSet
   std::cout << "size of 'hgcalDetIdMapper': " << hgcalDetIdMapper.size() << std::endl;
   
   auto it = hgcalDetIdMapper.begin();
+  int N_anyOf3 = 0;
+  int N_none = 0;
   while ( it != hgcalDetIdMapper.end() ) {
-    cout << "key(detId): " << it->first 
-         << ", hasValidDetId: " << it->second.hasValidDetId
-         << ", hasValidSimHit: " << it->second.hasValidSimHit
-         << ", hasValidDigi: " << it->second.hasValidDigi
-         << ", hasValidRecHit: " << it->second.hasValidRecHit
-         << std::endl;
+    if ( it->second.hasValidSimHit || it->second.hasValidDigi || it->second.hasValidRecHit ) {
+      N_anyOf3++;
+      std:: cout << "key(detId): " << it->first 
+                 << ",    DetId: " << it->second.hasValidDetId
+                 << ",    SimHit: " << it->second.hasValidSimHit
+                 << ",    Digi: " << it->second.hasValidDigi
+                 << ",    RecHit: " << it->second.hasValidRecHit
+                 << std::endl;
+    }
+    else {
+      N_none++;
+    }
+
     ++it;
   }
+  std::cout << "N_anyOf3=" << N_anyOf3 << ", N_none=" << N_none << std::endl;
 }
 
 

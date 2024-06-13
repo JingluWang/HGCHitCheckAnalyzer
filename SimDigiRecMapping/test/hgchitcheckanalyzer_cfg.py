@@ -13,7 +13,8 @@ options.register('input',
                  VarParsing.varType.string, 
                  "input directory")
 options.register('geometry', 
-                 'Extended2026D88', 
+                 #'Extended2026D88', 
+                 'Extended2026D99', 
                  VarParsing.multiplicity.singleton, 
                  VarParsing.varType.string, 
                  'geometry to use')

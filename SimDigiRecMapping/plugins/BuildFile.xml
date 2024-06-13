@@ -1,0 +1,17 @@
+<use name="SimGeneral/HepPDTRecord"/>
+<use name="clhep"/>
+<use name="hepmc"/>
+<use name="heppdt"/>
+<use name="boost"/>
+<use name="fastjet"/>
+<use name="fastjet-contrib"/>
+<use name="Geometry/Records"/>
+<use name="FWCore/Framework"/>
+<use name="SimDataFormats/GeneratorProducts"/>
+<use name="CommonTools/UtilAlgos"/>
+<use name="SimCalorimetry/HGCalSimProducers"/>
+<use name="SimCalorimetry/HGCalSimAlgos"/>
+<use name="SimDataFormats/PileupSummaryInfo"/>
+<use name="SimDataFormats/CaloHit"/>
+<use name="DataFormats/JetReco"/>
+<flags EDM_PLUGIN="1"/>

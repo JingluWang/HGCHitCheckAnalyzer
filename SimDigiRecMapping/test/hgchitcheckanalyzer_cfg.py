@@ -50,6 +50,11 @@ process.source = cms.Source("PoolSource",
                         )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(options.maxEvents) )
 
+#output file
+process.TFileService = cms.Service("TFileService",
+fileName=cms.string('outputRoot/test.root')
+)
+
 #analyzer
 process.ana = cms.EDAnalyzer("HGCHitCheckAnalyzer")
 process.p = cms.Path(process.ana)

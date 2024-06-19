@@ -14,6 +14,8 @@
 #include "SimDataFormats/CaloHit/interface/PCaloHitContainer.h"
 #include "SimDataFormats/CaloHit/interface/PCaloHit.h"
 #include "DataFormats/ForwardDetId/interface/HGCalDetId.h"
+#include "DataFormats/ForwardDetId/interface/HGCSiliconDetId.h"
+#include "DataFormats/ForwardDetId/interface/HGCScintillatorDetId.h"
 #include "DataFormats/HGCDigi/interface/HGCDigiCollections.h"
 #include "DataFormats/HGCRecHit/interface/HGCRecHitCollections.h"
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
@@ -131,6 +133,8 @@ void HGCHitCheckAnalyzer::analyze( const edm::Event &iEvent, const edm::EventSet
               << " #recHits: " << recHits->size()
               << std::endl;
 
+//      HGCSiliconDetId(validIds.rawId());
+
     //flag valid detIds
     for(auto id : validIds) hgcalDetIdMapper[id.rawId()] = CustomHGCALDetIdAccumulator(true,false,false,false);
 
@@ -178,6 +182,20 @@ void HGCHitCheckAnalyzer::analyze( const edm::Event &iEvent, const edm::EventSet
   while ( it != hgcalDetIdMapper.end() ) {
     if ( it->second.hasValidSimHit || it->second.hasValidDigi || it->second.hasValidRecHit ) {
       N_anyOf3++;
+
+      auto mapdetid = DetId(it->first);
+      // 1. SiliconDetId
+      if ( mapdetid.det() == DetId::HGCalEE || mapdetid.det() == DetId::HGCalHSi ) {
+          auto Silicon = HGCSiliconDetId( it->first );
+          //std::cout << "Silicon.layer=" << Silicon.layer() << std::endl;
+
+      }
+
+      // 2. ScintillatorDetId
+      if ( mapdetid.det() == DetId::HGCalHSc ) {
+          auto Scintillator = HGCScintillatorDetId( it->first );
+      }
+
       std:: cout << "key(detId): " << it->first 
                  << ",    DetId: " << it->second.hasValidDetId
                  << ",    SimHit: " << it->second.hasValidSimHit
